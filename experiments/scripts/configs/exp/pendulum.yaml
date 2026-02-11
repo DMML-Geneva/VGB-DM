@@ -1,0 +1,73 @@
+name_exp: 'pendulum'
+
+out_path: "./outputs/pendulum/"
+
+algorithm: "dyn-fm" # ['dyn-fm','node']
+
+seed: 3
+dataset:
+  data_path_tr: "./experiments/dataset/pendulum/one_to_many/friction/training/data_bd57ff1300c896bedae4815e639bb34a"
+  data_path_va: "./experiments/dataset/pendulum/one_to_many/friction/val/data_29292a73caee6edcdda4a027c74e3542"
+
+sampler:
+  max_length: -1
+  sampler_mode: "pairs-history" #['pairs','seq-pairs','trajectory', 'pairs-history']
+  enc_len_episode: 25
+  n_pairs_per_traj: 23
+
+enc_model:
+  len_episode: 25 #
+  state_dim: 1 # [angle, angular velocity] 
+  p_dim: 0 # 1
+  z_dim: 0 # 1
+  z_hidden_dims: [256,256,128,32]
+  cleansing_net: [128,128]
+  p_hidden_dims:  [128,128,256,64,32]
+  p_prior_type: 'gaussian'
+  p_prior_mean: [2] 
+  p_prior_std: [0.39]
+  prior_U_bounds : [[0.785, 3.14]] # column-wise lower bounds, upper bounds
+  softplus_mean: True
+
+vf_model:
+  dim_state: 1
+  t_freq_dim:  10
+  history_size: 2
+  hidden_dims: [64,64]
+  second_order: False
+  head_layers: [64,64]
+  activation: ReLU # ["ReLU", "Softplus", "SELU", "SiLU"]
+  time_varying: False
+  t_dependent: True
+  phys_model: False
+  ode_method: "rk4" #['euler',rk4','dopri5']
+  val_ode_method: "dopri5"
+  sigma: 0.0
+  interpolation: linear # ["linear", "lagrange"]
+
+optimization:
+  n_epochs: 6000
+  batch_size: 200 
+  vf_lr:  1e-3
+  enc_lr: 1e-3
+  vf_weight_decay: 1e-6
+  enc_weight_decay: 1e-6
+  coeff_R: 0.0
+  gamma_acc: 0.5
+  beta_p: 0.01 
+  beta_z: 0.01 
+  alpha: 0.01
+  beta: 0.001
+  gamma: 0.1
+
+training:
+  max_time_tr: 60 # in minutes
+  log_val_step: 20
+  log_train_step: 5  
+  after_val_step: 10
+  early_stopping: false
+  
+
+max_patience_counter: 10
+
+wandb_config_file: "experiments/scripts/configs/wandb/wandb_config.yaml"

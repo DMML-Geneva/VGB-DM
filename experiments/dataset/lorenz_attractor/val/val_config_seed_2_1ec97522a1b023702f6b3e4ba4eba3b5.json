@@ -1,0 +1,7 @@
+{
+    "n_trajectories": 250,
+    "n_points": 60,
+    "tmin": 0.0,
+    "tmax": 2.0,
+    "seed": 2
+}

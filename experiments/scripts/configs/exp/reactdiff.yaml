@@ -1,0 +1,71 @@
+name_exp: 'reactdiff'
+
+out_path: "./outputs/reactdiff/"
+
+algorithm: "dyn-fm" # ['dyn-fm','node']
+
+seed: 3
+dataset:
+  data_path_tr: "./experiments/dataset/reactdiff/3e7cf06d9323caaea6c4f566b7d328f2/dataset_3e7cf06d9323caaea6c4f566b7d328f2.pt"
+  data_path_va: "./experiments/dataset/reactdiff/25c9a935c332c89dda31bc4eaec21013/dataset_25c9a935c332c89dda31bc4eaec21013.pt"
+
+sampler:
+  max_length: -1
+  sampler_mode: "pairs-history" #['pairs','seq-pairs','trajectory', "pairs-history"]
+  enc_len_episode: 5
+  n_pairs_per_traj: 10
+
+enc_model:
+  len_episode: 5
+  grid_size: 32
+  state_dim: 2
+  p_dim: 2 # 2
+  z_dim: 10 # 10
+  p_prior_type: 'gaussian'
+  p_prior_mean: [0.0015, 0.005]
+  p_prior_std:  [0.0004, 0.0012]
+  prior_U_bounds : [[0.001, 0.002], # column-wise lower bounds, upper bounds
+                    [0.003, 0.007]]
+
+vf_model:
+  dim_state: 2
+  t_freq_dim:  10
+  history_size: 1 # vae ref: 1
+  n_filters: 4 # ref: 16
+  hidden_layers: 2 #  ref: 3
+  activation: SELU # ["ReLU", "Softplus", "SELU", "SiLU"]
+  time_varying: False
+  t_dependent: False
+  phys_model: False
+  dx: 0.06451612903 # 2/31
+  ode_method: "rk4" #['euler',rk4','dopri5']
+  val_ode_method: "dopri5"
+  sigma: 0.0
+  second_order: False
+
+
+optimization:
+  n_epochs: 2000 # 1000
+  batch_size: 512 #256, 125
+  vf_lr:  1e-3
+  enc_lr: 1e-3
+  vf_weight_decay: 5e-7
+  enc_weight_decay: 5e-7
+  coeff_R: 0.0
+  gamma_acc: 1.
+  beta_p: 0.0001 # 1.0, 0.01
+  beta_z: 0.1 # 1.0, 0.3
+  alpha: 0.0
+  beta: 0.0
+  gamma: 0.0 # 1e-5
+  
+
+training:
+  log_val_step: 20 
+  after_val_step: 50 
+  log_train_step: 1 
+  early_stopping: true
+
+max_patience_counter: 30
+
+wandb_config_file: "experiments/scripts/configs/wandb/wandb_config.yaml"

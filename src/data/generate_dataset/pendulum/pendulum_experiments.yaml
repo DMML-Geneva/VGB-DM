@@ -1,0 +1,11 @@
+
+one-to-many:
+  friction-pendulum-1:
+    len-episode: 200
+    range-init: [-1.57, 1.57]
+    range-omega: [0.785, 3.14]
+    range-gamma: [0.6, 1.5]
+    range-A: [0., 0.]
+    range-f: [1, 1]
+    single-sample-parameters: 1
+    n-stoch-samples: 1

@@ -1,0 +1,8 @@
+
+# General parameters
+logging: "INFO"
+rootdir: none
+
+defaults: 
+  - exp: pendulum
+  - wandb: wandb_config

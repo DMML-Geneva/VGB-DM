@@ -1,0 +1,70 @@
+name_exp: 'rlc'
+
+out_path: "./outputs/rlc/"
+
+algorithm: "dyn-fm" # ['dyn-fm','node']
+
+seed: 3
+
+dataset:
+  data_path_tr: "./experiments/dataset/RLC/train_size_1000.pkl"
+  data_path_va: "./experiments/dataset/RLC/valid_size_100.pkl"
+
+sampler:
+  max_length: -1
+  sampler_mode: "pairs-history" #['pairs','seq-pairs','trajectory', 'pairs-history']
+  enc_len_episode: 25 # used in pairs-history
+  n_pairs_per_traj: 20 # Thus: n_samples = batch_size * n_pairs_per_traj
+
+enc_model:
+  len_episode: 25 #
+  state_dim: 2
+  p_dim: 0 # 2
+  z_dim: 0 # 4
+  z_hidden_dims: [256,256,128,32]  #[128,64]
+  cleansing_net: [100,100,100]
+  p_hidden_dims:  [128,128,256,64,32] #[128,64,32]
+  p_prior_type: 'gaussian'
+  p_prior_mean: [2.5,1] # L and C prior means
+  p_prior_std: [0.8,0.4]
+  prior_U_bounds : [[1.0,5.0], # column-wise lower bounds, upper bounds
+                    [0.5,2.5]] 
+  softplus_mean: True
+
+vf_model:
+  dim_state: 2
+  t_freq_dim:  10
+  history_size: 2 # 10
+  hidden_dims: [128,128,128] #[64,64]
+  activation: SELU # ["ReLU", "Softplus", "SELU", "SiLU"]
+  time_varying: False
+  phys_model: False
+  ode_method: "dopri5" #['euler',rk4','dopri5']
+  val_ode_method: "dopri5"
+  sigma: 0.0
+  second_order: False
+
+optimization:
+  n_epochs: 2000
+  batch_size: 512 #256
+  vf_lr:  5e-4
+  enc_lr: 3e-5
+  vf_weight_decay: 5e-7
+  enc_weight_decay: 5e-7
+  coeff_R: 0.0
+  gamma_acc: 1.
+  beta_p: 0.01 # 1.0, 0.01
+  beta_z: 0.01 # 1.0, 0.3
+  alpha: 0.01
+  beta: 0.01
+  gamma: 0.0 # 1e-5
+
+training:
+  log_val_step: 20 #100
+  log_train_step: 20 #100
+  after_val_step: 20
+  early_stopping: false
+
+max_patience_counter: 20
+
+wandb_config_file: "experiments/scripts/configs/wandb/wandb_config.yaml"

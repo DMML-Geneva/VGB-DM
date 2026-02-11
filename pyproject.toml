@@ -1,0 +1,36 @@
+[project]
+requires-python = ">=3.12"
+name = "VGB-DM"
+version = "0.1.0"
+
+[tool.setuptools]
+include-package-data = true
+packages = ["src","experiments"]
+
+[build-system]
+requires = [
+    "setuptools >= 45",
+    "setuptools_scm[toml] >= 6.2",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 79
+target-version = ['py312']
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.dvc
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | \data
+  | \.dawgz
+)/
+'''
+
+[tool.isort]
+profile = "black"

@@ -1,0 +1,16 @@
+#@package hydra.launcher
+# =====================================================================================================
+# Review SLURM parameters for Hydra, by following: https://hydra.cc/docs/1.0/plugins/submitit_launcher/
+# https://github.com/facebookresearch/hydra/blob/main/plugins/hydra_submitit_launcher/hydra_plugins/hydra_submitit_launcher/config.py
+# =====================================================================================================
+name: "gb-fm" # name of the job
+
+# correspond to --time
+timeout_min: 60 # maximum time for a job to run in minutes, e.g 600 = 10 hours
+
+partition: shared-gpu
+
+cpus_per_task: 8
+gres: "gpu:1,VramPerGpu:10G"
+mem_gb: 32
+

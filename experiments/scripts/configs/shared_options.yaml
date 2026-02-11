@@ -1,0 +1,3 @@
+---
+defaults:
+  - ovveride hydra/launcher: joblib # required for joblib (available via pip)
