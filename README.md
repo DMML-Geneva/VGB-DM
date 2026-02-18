@@ -160,6 +160,7 @@ For hourly data:
 ```bash
 python src/grey_box_clim/climode_train_hourly.py --force_reload
 ```
+The GB-DM can run also on a small-mid GPU model (e.g 12GB VRAM) with a batch size of 16, while the ClimODE model requires a larger GPU (e.g. 25GB VRAM or slightly more) and a smaller batch size of 8 for training on hourly data. However, we suggest to keep the 32 GB of batch size for the GB-DM model to achieve better performance.
 
 For monthly data:
 
