@@ -1,0 +1,6 @@
+setup.py
+fm_weather.egg-info/PKG-INFO
+fm_weather.egg-info/SOURCES.txt
+fm_weather.egg-info/dependency_links.txt
+fm_weather.egg-info/not-zip-safe
+fm_weather.egg-info/top_level.txt
