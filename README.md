@@ -6,6 +6,10 @@ This repository contains the official implementation of the paper **Variational 
 
 VGB-DM is a novel approach for learning the dynamics of physical systems that combines incomplete physics models with data-driven deep generative methods. Unlike traditional simulation-based approaches that rely on expensive ODE solvers during training, VGB-DM adopts a simulation-free framework inspired by Flow Matching, enabling scalable and stable learning of high-dimensional dynamics. The method employs structured variational inference with separate latent variables to model stochasticity in the dynamics and infer unknown physical parameters, allowing it to capture complex multi-modal behaviours while maintaining interpretability. We applied VGB-DM various ODE/PDE systems and weather forecasting tasks compared to state-of-the-art baselines.
 
+## Method Overview
+
+![VGB-DM Diagram](diagram.png)
+
 ## Installation
 
 1.  **Create and activate the Conda environment:**
