@@ -1,5 +1,7 @@
 # Variational Grey-Box Dynamic Matching (VGB-DM)
 
+[![arXiv](https://img.shields.io/badge/arXiv-2602.17477-b31b1b.svg)](http://arxiv.org/abs/2602.17477)
+
 This repository contains the official implementation of the paper **Variational Grey-Box Dynamic Matching**, accepted at AISTATS 2026.
 
 ## TL;DR
