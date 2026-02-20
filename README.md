@@ -1,5 +1,7 @@
 # Variational Grey-Box Dynamic Matching (VGB-DM)
 
+[![arXiv](https://img.shields.io/badge/arXiv-2602.17477-b31b1b.svg)](http://arxiv.org/abs/2602.17477)
+
 This repository contains the official implementation of the paper **Variational Grey-Box Dynamic Matching**, accepted at AISTATS 2026.
 
 ## TL;DR
@@ -196,4 +198,17 @@ To evaluate the naive baseline (using the last observed state for all future pre
 
 **Note:** Before evaluation, ensure the dataset is prepared and run the training script at least once (for either hourly or monthly data) to generate the cached velocity data. The evaluation script will automatically load cached velocity data if available, or compute and cache it for future use.
 
+## Citation
 
+If you find this work useful, please cite:
+
+```bibtex
+@inproceedings{
+singh2026variational,
+title={Variational Grey-Box Dynamics Matching},
+author={Gurjeet Sangra Singh and Frantzeska Lavda and Giangiacomo Mercatali and Alexandros Kalousis},
+booktitle={The 29th International Conference on Artificial Intelligence and Statistics},
+year={2026},
+url={https://openreview.net/forum?id=NMuUPLBc84}
+}
+```
