@@ -2,6 +2,8 @@ from src.grey_box_clim.model_utils import *
 from src.grey_box_clim.utils import *
 from torchdiffeq import odeint as odeint
 
+from huggingface_hub import PyTorchModelHubMixin
+
 
 class Climate_ResNet_2D(nn.Module):
 
@@ -156,7 +158,13 @@ EPS_DT = 1e-6  # small epsilon to avoid division by zero in dt
 HOURS_in_DAY = 24.0
 
 
-class Climate_VFM_ENC(nn.Module):
+class Climate_GBDM_ENC(
+        nn.Module,
+        PyTorchModelHubMixin,
+        # meta data to register
+        pipeline_tag="time-series-forecasting",
+        license="mit",
+    ):
 
     def __init__(
         self,
@@ -696,7 +704,13 @@ class Climate_VFM_ENC(nn.Module):
         return ds
 
 
-class Climate_VFM_Monthly(nn.Module):
+class Climate_GBDM_Monthly(
+        nn.Module,
+        PyTorchModelHubMixin,
+        # meta data to register
+        pipeline_tag="time-series-forecasting",
+        license="mit",
+    ):
 
     def __init__(
         self,
