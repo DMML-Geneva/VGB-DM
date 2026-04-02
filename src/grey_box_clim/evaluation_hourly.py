@@ -22,7 +22,7 @@ from src.grey_box_clim.utils import (
     evaluation_rmsd_mm,
     evaluation_acc_mm,
 )
-from src.grey_box_clim.fm_phys_func import Climate_VFM_ENC
+from src.grey_box_clim.fm_phys_func import Climate_GBDM_ENC
 from src.grey_box_clim.model_function import (
     Climate_encoder_free_uncertain as ClimODE,
 )
@@ -42,8 +42,8 @@ parser = argparse.ArgumentParser("ClimODE")
 
 parser.add_argument("--solver", type=str, default="euler", choices=SOLVERS)
 parser.add_argument(
-    "--model", type=str, default="Models_ClimODE_with_noise_758f1b2d"
-)  # "data", "Models_fm_phys_683e4c13"
+    "--model", type=str, default="src/grey_box_clim/Models/bests/gb_dm_683e4c13.pt"
+)  # "data", "gb_dm_683e4c13.pt", "ClimODE_with_noise_758f1b2d.pt"
 parser.add_argument("--atol", type=float, default=5e-3)
 parser.add_argument("--rtol", type=float, default=5e-3)
 parser.add_argument("--batch_size", type=int, default=8)
@@ -173,7 +173,7 @@ if mod_str != "data":
     if "gb_dm" in mod_str:
         exp_args = model_dict["args"]
         model_state_dict = model_dict["model_state_dict"]
-        model = Climate_VFM_ENC(
+        model = Climate_GBDM_ENC(
             num_channels=5,
             history_size=exp_args.get("history_size", 0),
             const_channels=2,

@@ -3,7 +3,7 @@ import os
 from src.grey_box_clim.data import create_trajectory_datasets
 
 # from new_sde_fmv_phys_func import Climate_VFM_ENC
-from src.grey_box_clim.fm_phys_func import Climate_VFM_ENC
+from src.grey_box_clim.fm_phys_func import Climate_GBDM_ENC
 from src.grey_box_clim.utils import *
 from torch.utils.data import DataLoader
 import yaml
@@ -371,7 +371,7 @@ val_time_idx = DataLoader(
 )
 # Model declaration
 # num_years = len(range(2006,2016))
-model = Climate_VFM_ENC(
+model = Climate_GBDM_ENC(
     len(paths_to_data),
     args.history_size,
     2,
@@ -837,6 +837,8 @@ for epoch in range(args.niters):
                 f"Composite Score: {composite_score:.3e} "
                 f"(Val Loss: {avg_val_loss:.3e}, MSE: {overall_mse:.3e})"
             )
+            # Save hugging face hub compatible checkpoint
+            model.save_pretrained(OUT_CHKPT_DIR + f"gb_dm_best_{hashed_exp_name}_hf")
             if wandb.run is not None:
                 wandb.save(ckpt_path)
                 wandb.log(
@@ -845,6 +847,9 @@ for epoch in range(args.niters):
                         "val/best_composite_score": float(best_composite_score),
                     }
                 )
+                # save also hugging face compatible checkpoint to wandb
+                #wandb.save(OUT_CHKPT_DIR + f"gb_dm_best_{hashed_exp_name}_hf/pytorch_model.bin")
+                
 
     epoch_time_min = (time.perf_counter() - epoch_start_time) / 60.0
     total_time_min = (time.perf_counter() - training_start_time) / 60.0

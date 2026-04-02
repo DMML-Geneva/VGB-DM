@@ -14,7 +14,7 @@ matplotlib.use("Agg")
 import argparse
 import torch
 
-from src.grey_box_clim.fm_phys_func import Climate_VFM_Monthly
+from src.grey_box_clim.fm_phys_func import Climate_GBDM_Monthly
 from src.grey_box_clim.model_function import (
     Climate_encoder_free_uncertain_monthly,
 )
@@ -132,7 +132,7 @@ if model_str != "data":
     if "gb_dm" in model_str:
         exp_args = model_dict["args"]
         model_state_dict = model_dict["model_state_dict"]
-        model = Climate_VFM_Monthly(
+        model = Climate_GBDM_Monthly(
             num_channels=5,
             history_size=exp_args.get("history_size", 0),
             const_channels=2,

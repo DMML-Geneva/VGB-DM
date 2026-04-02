@@ -1,4 +1,4 @@
-from src.grey_box_clim.fm_phys_func import Climate_VFM_Monthly
+from src.grey_box_clim.fm_phys_func import Climate_GBDM_Monthly
 from src.grey_box_clim.model_function import Optim_velocity
 
 from src.grey_box_clim.utils import *
@@ -314,7 +314,7 @@ test_time_loader = DataLoader(
 num_years = (
     len(range(2006, 2016)) if torch.cuda.is_available() else len(range(2010, 2016))
 )
-model = Climate_VFM_Monthly(
+model = Climate_GBDM_Monthly(
     len(paths_to_data),
     args.history_size,
     2,
