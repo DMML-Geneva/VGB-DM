@@ -145,6 +145,8 @@ era5_data/
 
 After preparing the dataset, you can train the models using the following commands.
 
+In addition, you can find existing **checkpoints** of our experiment under the `src/grey_box_clim/Models/bests` folder. Please refer to the [Evaluation](#evaluation) section below.
+
 ### GB-DM Model
 
 For hourly data:
