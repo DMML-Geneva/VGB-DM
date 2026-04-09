@@ -1,6 +1,6 @@
 # Variational Grey-Box Dynamic Matching (VGB-DM)
 
-[![arXiv](https://img.shields.io/badge/arXiv-2602.17477-b31b1b.svg)](http://arxiv.org/abs/2602.17477)
+[![arXiv](https://img.shields.io/badge/arXiv-2602.17477-b31b1b.svg)](http://arxiv.org/abs/2602.17477) [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-md-dark.svg)](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM)
 
 This repository contains the official implementation of the paper **Variational Grey-Box Dynamic Matching**, accepted at AISTATS 2026.
 
@@ -115,7 +115,7 @@ Arguments:
 - `--root_dir`: Path to the directory containing trained model checkpoints (searches recursively for `best_chkpt.pth` files)
 - `--dataset_path`: Path to the test dataset file
 
-# Weather and Climate Modelling
+# Weather and Climate Modelling [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-md-dark.svg)](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM)
 
 ## Dataset Preparation
 
