@@ -117,6 +117,8 @@ Arguments:
 
 # Weather and Climate Modelling [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-md-dark.svg)](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM)
 
+Please refer to the [Hugging Face Space](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM), where we saved our Neural-Transport-Source Model checkpoints. You can easily play and edit it using  `PyTorchModelHubMixin`. Please follow the instruction in the [Load Climate HF-Model](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM#2-load-the-model-from-the-hub) Section.
+
 ## Dataset Preparation
 
 For the climate modelling experiments, we use the ERA5 reanalysis dataset for medium-range weather forecasting (similar to ClimODE). The dataset includes five key meteorological variables: (i) geopotential, (ii) ground temperature, (iii) atmospheric temperature, (iv) and (v) the two ground-level wind components (u10 and v10).
