@@ -117,6 +117,22 @@ Arguments:
 
 # Weather and Climate Modelling [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-md-dark.svg)](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM)
 
+<p align="center">
+  <b>
+    <span style="color: blue;">Transport</span>-
+    <span style="color: orange;">Source</span> Model
+  </b>
+</p>
+
+$$
+\begin{equation*}
+        \frac{\partial u}{\partial t} = -\underbrace{\textcolor{blue}{v_t^\phi}(u_t, \nabla u_t, z_t, \psi) \cdot \nabla u_t}_{\textcolor{blue}{\text{transport}}}
+         - \underbrace{u_t\,(\nabla \cdot \textcolor{blue}{v_t^\phi}(u_t, \nabla u_t, z_t, \psi))}_{\text{compression}} + \underbrace{\textcolor{orange}{s_t^\phi}(u_t, \nabla u_t, \psi)}_{\textcolor{orange}{\text{source}}}
+    \end{equation*}
+$$
+
+![climate-terms](vel-source-transport-compression_2_time_6.png)
+
 Please refer to the [Hugging Face Space](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM), where we saved our Neural-Transport-Source Model checkpoints. You can easily play and edit it using  `PyTorchModelHubMixin`. Please follow the instruction in the [Load Climate HF-Model](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM#2-load-the-model-from-the-hub) Section.
 
 ## Dataset Preparation
