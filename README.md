@@ -135,6 +135,17 @@ $$
 
 Please refer to the [Hugging Face Space](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM), where we saved our Neural-Transport-Source Model checkpoints. You can easily play and edit it using  `PyTorchModelHubMixin`. Please follow the instruction in the [Load Climate HF-Model](https://huggingface.co/GurjeetSinghSangra/climate_GB_FM#2-load-the-model-from-the-hub) Section.
 
+## Example of Evolution of Velocity-Transport-Source Terms
+<center>
+  <h3><b>10m U-wind (u10)</b></h3>
+  <img src="vel-source-transport-compression_3.gif" alt="climate-terms">
+</center> 
+
+<center>
+  <h3><b>2m Temperature (2tm)</b></h3>
+  <img src="vel-source-transport-compression_2.gif" alt="climate-terms">
+</center>
+
 ## Dataset Preparation
 
 For the climate modelling experiments, we use the ERA5 reanalysis dataset for medium-range weather forecasting (similar to ClimODE). The dataset includes five key meteorological variables: (i) geopotential, (ii) ground temperature, (iii) atmospheric temperature, (iv) and (v) the two ground-level wind components (u10 and v10).
